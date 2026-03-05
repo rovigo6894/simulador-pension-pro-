@@ -21,6 +21,7 @@ LICENCIAS = {
     "PRO-008": {"expira": "2026-12-31", "activa": True, "max_usos": 2},
     "PRO-009": {"expira": "2026-12-31", "activa": True, "max_usos": 2},
     "PRO-010": {"expira": "2026-12-31", "activa": True, "max_usos": 2},
+    "DEMO-CLIENTE": {"expira": "2026-12-31", "activa": True, "max_usos": 10},
 }
 
 ARCHIVO_USOS = "usos_simulador.json"
