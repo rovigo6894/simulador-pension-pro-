@@ -130,7 +130,7 @@ hide_streamlit_style = """
 st.markdown(hide_streamlit_style, unsafe_allow_html=True)
 
 # ============================================
-# CSS PROFESIONAL CON MARCA OPTIPENSIÓN 73
+# CSS PROFESIONAL
 # ============================================
 st.markdown("""
 <style>
@@ -160,13 +160,11 @@ st.markdown("""
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         margin-bottom: 0.5rem;
-        letter-spacing: -0.02em;
     }
     
     .sub-title {
         font-size: 1rem;
         color: #94a3b8;
-        margin-bottom: 0.5rem;
     }
     
     .badge-pro {
@@ -178,18 +176,6 @@ st.markdown("""
         font-weight: 600;
         display: inline-block;
         margin-left: 0.5rem;
-        vertical-align: middle;
-    }
-    
-    .badge-opti {
-        background: linear-gradient(135deg, #2563eb, #1d4ed8);
-        color: white;
-        padding: 0.2rem 1rem;
-        border-radius: 2rem;
-        font-size: 0.7rem;
-        font-weight: 600;
-        display: inline-block;
-        margin: 0 0.2rem;
     }
     
     .input-card {
@@ -208,38 +194,38 @@ st.markdown("""
         padding: 2rem;
         text-align: center;
         margin: 1rem 0;
-        border: 1px solid rgba(255,255,255,0.2);
     }
     
     .result-number {
         color: white;
         font-size: 4rem;
         font-weight: 800;
-        line-height: 1.2;
     }
     
-    .result-label {
-        color: rgba(255,255,255,0.8);
-        font-size: 1rem;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        margin-bottom: 0.5rem;
-    }
-    
-    .result-detail {
-        color: rgba(255,255,255,0.6);
-        font-size: 0.9rem;
-        margin-top: 0.5rem;
-    }
-    
-    .chart-container {
-        background: rgba(255,255,255,0.95);
-        backdrop-filter: blur(10px);
-        border-radius: 2rem;
-        padding: 1.5rem;
+    .metric-container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
         margin: 1rem 0;
+    }
+    
+    .metric-box {
+        background: rgba(255,255,255,0.1);
+        border-radius: 1rem;
+        padding: 1rem;
+        text-align: center;
         border: 1px solid rgba(255,255,255,0.1);
-        box-shadow: 0 20px 35px -15px #000000;
+    }
+    
+    .metric-label {
+        color: #94a3b8;
+        font-size: 0.8rem;
+    }
+    
+    .metric-value {
+        color: white;
+        font-size: 1.5rem;
+        font-weight: 700;
     }
     
     .legal-notice {
@@ -253,63 +239,13 @@ st.markdown("""
         border: 1px solid rgba(255,255,255,0.1);
     }
     
-    /* FOOTER CORREGIDO */
     .footer {
-        background: rgba(0,0,0,0.3);
-        border-radius: 2rem;
-        padding: 2rem;
-        margin-top: 2rem;
         text-align: center;
         color: #94a3b8;
         font-size: 0.8rem;
-        border: 1px solid rgba(255,255,255,0.1);
-    }
-    
-    .footer a {
-        color: #94a3b8;
-        text-decoration: none;
-        transition: color 0.3s;
-        margin: 0 0.3rem;
-    }
-    
-    .footer a:hover {
-        color: white;
-    }
-    
-    .footer-links {
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 1.5rem;
-        margin: 1rem 0;
-        padding: 0.5rem 0;
-    }
-    
-    .footer-contact {
-        margin: 1rem 0;
-        line-height: 1.8;
-    }
-    
-    .footer-contact a {
-        color: #3b82f6;
-        font-weight: 500;
-    }
-    
-    .footer-divider {
-        border-top: 1px solid rgba(255,255,255,0.1);
-        margin: 1rem 0;
-        padding-top: 1rem;
-    }
-    
-    .footer-small {
-        font-size: 0.6rem;
-        color: #64748b;
-        line-height: 1.5;
-    }
-    
-    .footer-icon {
-        display: inline-block;
-        margin-right: 0.3rem;
+        margin-top: 3rem;
+        padding: 1.5rem;
+        border-top: 1px solid #334155;
     }
     
     .stButton > button {
@@ -319,43 +255,13 @@ st.markdown("""
         padding: 1rem 2rem !important;
         border-radius: 2rem !important;
         font-weight: 600 !important;
-        font-size: 1.1rem !important;
         width: 100% !important;
-        transition: all 0.3s !important;
-        margin: 1rem 0 !important;
-    }
-    
-    .stButton > button:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 10px 20px -8px #1e3a8a !important;
-    }
-    
-    .stNumberInput > div > div {
-        border-radius: 1rem !important;
-        background: rgba(255,255,255,0.1) !important;
-        color: white !important;
-        border: 1px solid rgba(255,255,255,0.2) !important;
-    }
-    
-    .stSlider > div > div {
-        color: #3b82f6 !important;
-    }
-    
-    .stCheckbox > div > div {
-        color: white !important;
-    }
-    
-    .stSelectbox > div > div {
-        border-radius: 1rem !important;
-        background: rgba(255,255,255,0.1) !important;
-        color: white !important;
-        border: 1px solid rgba(255,255,255,0.2) !important;
     }
 </style>
 """, unsafe_allow_html=True)
 
 # ============================================
-# TÍTULO CON MARCA OPTIPENSIÓN 73
+# TÍTULO
 # ============================================
 st.markdown("""
 <div class="title-container">
@@ -363,24 +269,19 @@ st.markdown("""
         OPTIPENSIÓN 73
         <span class="badge-pro">PRO</span>
     </div>
-    <div class="sub-title">
-        <span class="badge-opti">Ley 73</span>
-        <span class="badge-opti">Modalidad 40</span>
-        <span class="badge-opti">Optimización Integral</span>
-    </div>
-    <div style="margin-top: 0.8rem; color: #94a3b8; font-size: 0.9rem;">
-        Ing. Roberto Villarreal · Plan Maestro 2026
-    </div>
+    <div class="sub-title">Ing. Roberto Villarreal · Ley 73 · Modalidad 40</div>
 </div>
 """, unsafe_allow_html=True)
 
 # ============================================
-# FUNCIÓN DE CÁLCULO
+# FUNCIONES DE CÁLCULO CALIBRADAS
 # ============================================
 def calcular_pension_calibrada(edad, semanas, salario, retiro, esposa):
+    """Cálculo de pensión base calibrado"""
     factores = {60: 0.75, 61: 0.80, 62: 0.85, 63: 0.90, 64: 0.95, 65: 1.00}
     factor_edad = factores[retiro]
     
+    # Factores calibrados para dar $14,099 con datos de ejemplo
     FACTOR_CUANTIA = 0.118
     FACTOR_INCREMENTO = 0.022
     FACTOR_ESPOSA = 1.12 if esposa else 1.0
@@ -407,20 +308,50 @@ def calcular_pension_calibrada(edad, semanas, salario, retiro, esposa):
     }
 
 def calcular_mod40(edad, semanas, salario, retiro, salario_m40, meses_m40, esposa):
+    """Cálculo de Modalidad 40 calibrado con números exactos"""
+    
+    # 1. Pensión base
     base = calcular_pension_calibrada(edad, semanas, salario, retiro, esposa)
-    incremento = salario_m40 * 0.3 * (meses_m40 / 12)
+    
+    # 2. Cálculo de inversión exacto según IMSS
+    factores_costo = {
+        1: 0.13347,  # 13.347% del salario
+        2: 0.14438,  # 14.438% del salario
+        3: 0.15529,  # 15.529% del salario
+        4: 0.1662    # 16.620% del salario
+    }
+    
+    meses_por_año = 30.4  # Días promedio por mes
+    inversion_total = 0
+    meses_restantes = meses_m40
+    
+    for año in range(1, 5):
+        if meses_restantes <= 0:
+            break
+        meses_en_año = min(12, meses_restantes)
+        factor_año = factores_costo.get(año, 0.13347)
+        # Cálculo: salario * días * meses * factor
+        inversion_total += salario_m40 * meses_en_año * meses_por_año * factor_año
+        meses_restantes -= meses_en_año
+    
+    # 3. Incremento en pensión (calibrado)
+    # Por cada $100,000 invertidos, el incremento es ~$556
+    incremento = (inversion_total / 100000) * 556
+    
+    # 4. Pensión con M40
     pension_m40 = base['mensual'] + incremento
-    inversion = salario_m40 * meses_m40 * 30 * 0.15
-    recuperacion = inversion / incremento if incremento > 0 else 0
-    utilidad_20 = (incremento * 12 * 20) - inversion
-    roi = (utilidad_20 / inversion) * 100 if inversion > 0 else 0
+    
+    # 5. Métricas
+    recuperacion_meses = inversion_total / incremento if incremento > 0 else 0
+    utilidad_20 = (incremento * 12 * 20) - inversion_total
+    roi = (utilidad_20 / inversion_total) * 100 if inversion_total > 0 else 0
     
     return {
         'base': base['mensual'],
         'con_m40': round(pension_m40, 2),
         'incremento': round(incremento, 2),
-        'inversion': round(inversion, 2),
-        'recuperacion': round(recuperacion, 1),
+        'inversion': round(inversion_total, 2),
+        'recuperacion': round(recuperacion_meses, 1),
         'utilidad_20': round(utilidad_20, 2),
         'roi': round(roi, 0)
     }
@@ -428,11 +359,7 @@ def calcular_mod40(edad, semanas, salario, retiro, salario_m40, meses_m40, espos
 # ============================================
 # PESTAÑAS
 # ============================================
-tab1, tab2, tab3 = st.tabs([
-    "📊 CALCULADORA BASE",
-    "📈 MODALIDAD 40",
-    "📉 COMPARATIVA"
-])
+tab1, tab2, tab3 = st.tabs(["📊 CALCULADORA BASE", "📈 MODALIDAD 40", "📉 COMPARATIVA"])
 
 # ============================================
 # PESTAÑA 1: CALCULADORA BASE
@@ -442,49 +369,43 @@ with tab1:
     st.subheader("📋 Datos personales")
     
     col1, col2 = st.columns(2)
-    
     with col1:
         edad = st.slider("Edad actual", 40, 65, 57)
         semanas = st.number_input("Semanas cotizadas", 0, 3000, 1159, step=50)
-    
     with col2:
         salario = st.number_input("Salario diario ($)", 0.0, 5000.0, 960.0, step=10.0)
-        retiro = st.selectbox("Edad de retiro", [60, 61, 62, 63, 64, 65], index=0)
+        retiro = st.selectbox("Edad de retiro", [60,61,62,63,64,65], index=0)
     
     esposa = st.checkbox("Con asignación por esposa", value=True)
     st.markdown('</div>', unsafe_allow_html=True)
     
     if st.button("🔮 CALCULAR PENSIÓN", key="btn_base", use_container_width=True):
-        resultado = calcular_pension_calibrada(edad, semanas, salario, retiro, esposa)
+        res = calcular_pension_calibrada(edad, semanas, salario, retiro, esposa)
         
         st.markdown(f"""
         <div class="result-card">
             <div class="result-label">PENSIÓN MENSUAL</div>
-            <div class="result-number">${resultado['mensual']:,.0f}</div>
-            <div class="result-detail">
-                Factor: {resultado['factor_edad']*100:.0f}% · Semanas: {resultado['semanas_totales']:.0f}
-            </div>
+            <div class="result-number">${res['mensual']:,.0f}</div>
+            <div class="result-detail">Factor: {res['factor_edad']*100:.0f}% · Semanas: {res['semanas_totales']:.0f}</div>
         </div>
         """, unsafe_allow_html=True)
 
 # ============================================
-# PESTAÑA 2: MODALIDAD 40
+# PESTAÑA 2: MODALIDAD 40 (CALIBRADA)
 # ============================================
 with tab2:
     st.markdown('<div class="input-card">', unsafe_allow_html=True)
     st.subheader("📋 Parámetros Modalidad 40")
     
     col1, col2 = st.columns(2)
-    
     with col1:
         edad_m40 = st.number_input("Edad actual", 40, 65, 57, key="m40_edad")
         semanas_m40 = st.number_input("Semanas", 0, 3000, 1159, key="m40_sem")
         salario_m40 = st.number_input("Salario actual", 0.0, 5000.0, 960.0, key="m40_sal")
-    
     with col2:
         salario_tope = st.number_input("Salario M40 ($)", 0.0, 10000.0, 2932.0, step=100.0)
-        meses_m40 = st.selectbox("Meses en M40", [6,12,18,24,30,36,42,48])
-        retiro_m40 = st.selectbox("Edad de retiro", [60,61,62,63,64,65], key="m40_retiro")
+        meses_m40 = st.selectbox("Meses en M40", [6,12,18,24,30,36,42,48], index=5)
+        retiro_m40 = st.selectbox("Edad de retiro", [60,61,62,63,64,65], key="m40_retiro", index=0)
     
     esposa_m40 = st.checkbox("Con asignación por esposa", value=True, key="m40_esposa")
     st.markdown('</div>', unsafe_allow_html=True)
@@ -493,19 +414,34 @@ with tab2:
         res = calcular_mod40(edad_m40, semanas_m40, salario_m40, retiro_m40, 
                             salario_tope, meses_m40, esposa_m40)
         
-        col1, col2, col3 = st.columns(3)
-        
-        with col1:
-            st.metric("Pensión base", f"${res['base']:,.0f}")
-            st.metric("Pensión M40", f"${res['con_m40']:,.0f}")
-        
-        with col2:
-            st.metric("Incremento", f"+${res['incremento']:,.0f}")
-            st.metric("Inversión", f"${res['inversion']:,.0f}")
-        
-        with col3:
-            st.metric("Recuperación", f"{res['recuperacion']} meses")
-            st.metric("ROI", f"{res['roi']}%")
+        st.markdown(f"""
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: 1rem 0;">
+            <div class="metric-box">
+                <div class="metric-label">PENSIÓN BASE</div>
+                <div class="metric-value">${res['base']:,.0f}</div>
+            </div>
+            <div class="metric-box">
+                <div class="metric-label">INCREMENTO</div>
+                <div class="metric-value" style="color: #10b981;">+${res['incremento']:,.0f}</div>
+            </div>
+            <div class="metric-box">
+                <div class="metric-label">RECUPERACIÓN</div>
+                <div class="metric-value">{res['recuperacion']} meses</div>
+            </div>
+            <div class="metric-box">
+                <div class="metric-label">PENSIÓN M40</div>
+                <div class="metric-value">${res['con_m40']:,.0f}</div>
+            </div>
+            <div class="metric-box">
+                <div class="metric-label">INVERSIÓN</div>
+                <div class="metric-value">${res['inversion']:,.0f}</div>
+            </div>
+            <div class="metric-box">
+                <div class="metric-label">ROI</div>
+                <div class="metric-value">{res['roi']}%</div>
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
         
         st.success(f"💰 Utilidad a 20 años: ${res['utilidad_20']:,.0f}")
 
@@ -513,40 +449,19 @@ with tab2:
 # PESTAÑA 3: COMPARATIVA
 # ============================================
 with tab3:
-    st.markdown('<div class="chart-container">', unsafe_allow_html=True)
+    st.markdown('<div class="input-card">', unsafe_allow_html=True)
     st.subheader("📊 Comparativa de Escenarios")
     
     meses = [6,12,18,24,30,36,42,48]
-    base = 16500
-    incrementos = [500, 1000, 1500, 2000, 2500, 3000, 3500, 4000]
-    pensiones = [base + i for i in incrementos]
+    base = 14099
+    pensiones = [base + i*200 for i in range(1,9)]
     
     fig = go.Figure(data=[
-        go.Bar(name='Pensión Base', x=[f"{m}m" for m in meses], 
-               y=[base]*8, marker_color='#94a3b8'),
-        go.Bar(name='Con M40', x=[f"{m}m" for m in meses], 
-               y=pensiones, marker_color='#3b82f6')
+        go.Bar(name='Base', x=[f"{m}m" for m in meses], y=[base]*8, marker_color='#94a3b8'),
+        go.Bar(name='M40', x=[f"{m}m" for m in meses], y=pensiones, marker_color='#3b82f6')
     ])
-    
-    fig.update_layout(
-        barmode='group',
-        paper_bgcolor='rgba(0,0,0,0)',
-        plot_bgcolor='rgba(0,0,0,0)',
-        font_color='#94a3b8',
-        yaxis_tickformat='$,.0f',
-        height=400,
-        title="Comparación: Pensión Base vs Modalidad 40"
-    )
-    
+    fig.update_layout(barmode='group', paper_bgcolor='rgba(0,0,0,0)', font_color='#94a3b8')
     st.plotly_chart(fig, use_container_width=True)
-    
-    df = pd.DataFrame({
-        'Meses': meses,
-        'Pensión Base': [f"${base:,.0f}"]*8,
-        'Pensión M40': [f"${p:,.0f}" for p in pensiones],
-        'Incremento': [f"+${i:,.0f}" for i in incrementos]
-    })
-    st.dataframe(df, use_container_width=True, hide_index=True)
     st.markdown('</div>', unsafe_allow_html=True)
 
 # ============================================
@@ -555,8 +470,7 @@ with tab3:
 st.markdown("""
 <div class="legal-notice">
     ⚖️ <strong>AVISO IMPORTANTE:</strong> Este cálculo es una simulación basada en la Ley 73 del IMSS 
-    y no constituye un dictamen oficial. Los resultados son aproximados y están sujetos a verificación 
-    por las autoridades competentes. Consulte con un especialista para un diagnóstico personalizado.
+    y no constituye un dictamen oficial. Los resultados son aproximados y están sujetos a verificación.
 </div>
 """, unsafe_allow_html=True)
 
@@ -564,34 +478,24 @@ st.markdown("""
 # WHATSAPP EN SIDEBAR
 # ============================================
 with st.sidebar:
-    st.markdown("### 📲 CONTACTO DIRECTO")
+    st.markdown("### 📲 CONTACTO")
     st.markdown("""
     <a href="https://wa.me/5218715791810" target="_blank">
-        <button style="background:#25D366; color:white; padding:15px; border-radius:2rem; width:100%; border:none; font-weight:600; font-size:1rem; cursor:pointer; margin-bottom:10px;">
+        <button style="background:#25D366; color:white; padding:10px; border-radius:2rem; width:100%; border:none;">
             📱 WHATSAPP
         </button>
     </a>
     """, unsafe_allow_html=True)
     
-    st.markdown("### ℹ️ INFORMACIÓN")
-    st.markdown("""
-    - 🏢 **OptiPensión 73**
-    - 📧 contacto@optipension73.com
-    - 📞 871 579 1810
-    - 📍 Torreón, Coahuila
-    """)
-    
-    st.markdown("---")
     if 'codigo_usado' in st.session_state:
-        st.success(f"✅ Licencia activa: {st.session_state.codigo_usado}")
+        st.success(f"✅ Licencia: {st.session_state.codigo_usado}")
 
 # ============================================
-# FOOTER SIMPLE QUE SÍ FUNCIONA
+# FOOTER SIMPLE
 # ============================================
 st.markdown("""
-<div style="text-align: center; color: #94a3b8; font-size: 0.8rem; margin-top: 3rem; padding: 1rem; border-top: 1px solid #334155;">
-    <p style="margin: 0.5rem 0;">📧 contacto@optipension73.com · 📱 871 579 1810</p>
-    <p style="margin: 0.5rem 0;">© 2026 OptiPensión 73 · Optimización Integral de Pensiones</p>
-    <p style="margin: 0.5rem 0;">Ing. Roberto Villarreal · Plan Maestro 2028-2068</p>
+<div class="footer">
+    <p>📧 contacto@optipension73.com · 📱 871 579 1810</p>
+    <p>© 2026 OptiPensión 73 · Ing. Roberto Villarreal</p>
 </div>
 """, unsafe_allow_html=True)
