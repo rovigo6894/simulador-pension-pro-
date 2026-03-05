@@ -419,7 +419,7 @@ with tab3:
             st.success(f"✨ **Mejor escenario:** {meses_comparar[mejor_idx]} meses M40 - Pensión: ${pensiones_m40[mejor_idx]:,.0f}")
 
 # ============================================
-# PIE DE PÁGINA - VERSIÓN FINAL
+# PIE DE PÁGINA - VERSIÓN QUE SÍ FUNCIONA
 # ============================================
 st.divider()
 st.markdown("""
@@ -436,7 +436,7 @@ st.markdown("""
         <a href='#' style='color: #94a3b8; margin: 0 0.5rem; text-decoration: none;'>Contacto</a>
     </p>
 
-    <p style='margin-top: 1rem;'>📧 contacto@optipension73.com · 📱 871 579 1810 · 📍 Torreón, Coahuila</p>
+    <p style='margin-top: 1rem;'>📧 <a href='mailto:contacto@optipension73.com' style='color: #94a3b8; text-decoration: none;'>contacto@optipension73.com</a> · 📱 871 579 1810 · 📍 Torreón, Coahuila</p>
     <p>© 2026 OptiPensión 73. Todos los derechos reservados.</p>
 
 </div>
