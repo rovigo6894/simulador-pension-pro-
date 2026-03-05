@@ -419,7 +419,7 @@ with tab3:
             st.success(f"✨ **Mejor escenario:** {meses_comparar[mejor_idx]} meses M40 - Pensión: ${pensiones_m40[mejor_idx]:,.0f}")
 
 # ============================================
-# PIE DE PÁGINA CORREGIDO
+# PIE DE PÁGINA CORREGIDO (PEGA ESTO EXACTO)
 # ============================================
 st.divider()
 st.markdown("""
@@ -427,10 +427,8 @@ st.markdown("""
 
     <div style='background: rgba(0,0,0,0.2); border-radius: 1rem; padding: 1.5rem; margin-bottom: 1rem;'>
         <p style='font-weight: 600; color: #f59e0b; margin-bottom: 0.5rem;'>⚠️ AVISO IMPORTANTE</p>
-        <p>Este simulador proporciona estimaciones basadas en la Ley 73 del IMSS y la información proporcionada por el usuario. 
-        Los resultados son aproximados y no constituyen un dictamen oficial ni una garantía de pago.</p>
-        <p style='margin-top: 0.5rem;'>Se recomienda consultar directamente con el Instituto Mexicano del Seguro Social (IMSS) 
-        o con un asesor previsional certificado para obtener un cálculo definitivo y personalizado.</p>
+        <p style='margin: 0.5rem 0;'>Este simulador proporciona estimaciones basadas en la Ley 73 del IMSS y la información proporcionada por el usuario. Los resultados son aproximados y no constituyen un dictamen oficial ni una garantía de pago.</p>
+        <p style='margin: 0.5rem 0;'>Se recomienda consultar directamente con el Instituto Mexicano del Seguro Social (IMSS) o con un asesor previsional certificado para obtener un cálculo definitivo y personalizado.</p>
     </div>
 
     <div style='display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem; margin: 1rem 0; padding: 0.5rem 0;'>
