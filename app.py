@@ -419,7 +419,7 @@ with tab3:
             st.success(f"✨ **Mejor escenario:** {meses_comparar[mejor_idx]} meses M40 - Pensión: ${pensiones_m40[mejor_idx]:,.0f}")
 
 # ============================================
-# PIE DE PÁGINA CORREGIDO (PEGA ESTO EXACTO)
+# PIE DE PÁGINA DEFINITIVO
 # ============================================
 st.divider()
 st.markdown("""
