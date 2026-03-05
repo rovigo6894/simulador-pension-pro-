@@ -586,48 +586,12 @@ with st.sidebar:
         st.success(f"✅ Licencia activa: {st.session_state.codigo_usado}")
 
 # ============================================
-# FOOTER VERSIÓN FINAL - PEGA ESTO EXACTO
+# FOOTER SIMPLE QUE SÍ FUNCIONA
 # ============================================
 st.markdown("""
-<div style="background: rgba(0,0,0,0.3); border-radius: 2rem; padding: 2rem; margin-top: 2rem; text-align: center; border: 1px solid rgba(255,255,255,0.1);">
-    
-    <div style="font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem; background: linear-gradient(135deg, #ffffff, #94a3b8); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
-        OptiPensión 73
-    </div>
-    
-    <div style="margin-bottom: 1.5rem; color: #94a3b8;">
-        Optimización Integral de Pensiones · Ley 73
-    </div>
-    
-    <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 1.5rem; margin: 1rem 0; padding: 0.5rem 0;">
-        <a href="#" style="color: #94a3b8; text-decoration: none;">Inicio</a>
-        <a href="#" style="color: #94a3b8; text-decoration: none;">Calculadora</a>
-        <a href="#" style="color: #94a3b8; text-decoration: none;">Modalidad 40</a>
-        <a href="#" style="color: #94a3b8; text-decoration: none;">Comparativa</a>
-        <a href="#" style="color: #94a3b8; text-decoration: none;">Contacto</a>
-    </div>
-    
-    <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 1.5rem; margin: 1rem 0; padding: 0.5rem 0;">
-        <a href="#" style="color: #94a3b8; text-decoration: none;">Aviso de Privacidad</a>
-        <a href="#" style="color: #94a3b8; text-decoration: none;">Términos y Condiciones</a>
-        <a href="#" style="color: #94a3b8; text-decoration: none;">Política de Cookies</a>
-        <a href="#" style="color: #94a3b8; text-decoration: none;">Legal</a>
-    </div>
-    
-    <div style="margin: 1.5rem 0; line-height: 1.8;">
-        <p style="color: #94a3b8;">📧 <a href="mailto:contacto@optipension73.com" style="color: #3b82f6; text-decoration: none;">contacto@optipension73.com</a></p>
-        <p style="color: #94a3b8;">📱 <a href="tel:8715791810" style="color: #3b82f6; text-decoration: none;">871 579 1810</a></p>
-        <p style="color: #94a3b8;">📍 Torreón, Coahuila · México</p>
-    </div>
-    
-    <div style="border-top: 1px solid rgba(255,255,255,0.1); margin: 1rem 0; padding-top: 1rem;">
-        <p style="color: #94a3b8;">© 2026 OptiPensión 73. Todos los derechos reservados.</p>
-    </div>
-    
-    <div style="font-size: 0.7rem; color: #64748b;">
-        <p>Ing. Roberto Villarreal González · Plan Maestro 2028-2068</p>
-        <p style="font-size: 0.6rem; margin-top: 0.5rem;">⚕️ Cruz Ankh + Ojo de Horus · Alma vieja, cuerpo resistente</p>
-    </div>
-    
+<div style="text-align: center; color: #94a3b8; font-size: 0.8rem; margin-top: 3rem; padding: 1rem; border-top: 1px solid #334155;">
+    <p style="margin: 0.5rem 0;">📧 contacto@optipension73.com · 📱 871 579 1810</p>
+    <p style="margin: 0.5rem 0;">© 2026 OptiPensión 73 · Optimización Integral de Pensiones</p>
+    <p style="margin: 0.5rem 0;">Ing. Roberto Villarreal · Plan Maestro 2028-2068</p>
 </div>
 """, unsafe_allow_html=True)
