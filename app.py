@@ -419,7 +419,7 @@ with tab3:
             st.success(f"✨ **Mejor escenario:** {meses_comparar[mejor_idx]} meses M40 - Pensión: ${pensiones_m40[mejor_idx]:,.0f}")
 
 # ============================================
-# PIE DE PÁGINA SIMPLE QUE SÍ FUNCIONA
+# PIE DE PÁGINA - VERSIÓN FINAL
 # ============================================
 st.divider()
 st.markdown("""
@@ -430,10 +430,10 @@ st.markdown("""
     <p>Consulte con un asesor certificado para un cálculo definitivo.</p>
 
     <p style='margin-top: 1rem;'>
-        <a href='#' style='color: #94a3b8; margin: 0 0.5rem;'>Aviso de Privacidad</a> |
-        <a href='#' style='color: #94a3b8; margin: 0 0.5rem;'>Términos y Condiciones</a> |
-        <a href='#' style='color: #94a3b8; margin: 0 0.5rem;'>Política de Cookies</a> |
-        <a href='#' style='color: #94a3b8; margin: 0 0.5rem;'>Contacto</a>
+        <a href='#' style='color: #94a3b8; margin: 0 0.5rem; text-decoration: none;'>Aviso de Privacidad</a> |
+        <a href='#' style='color: #94a3b8; margin: 0 0.5rem; text-decoration: none;'>Términos y Condiciones</a> |
+        <a href='#' style='color: #94a3b8; margin: 0 0.5rem; text-decoration: none;'>Política de Cookies</a> |
+        <a href='#' style='color: #94a3b8; margin: 0 0.5rem; text-decoration: none;'>Contacto</a>
     </p>
 
     <p style='margin-top: 1rem;'>📧 contacto@optipension73.com · 📱 871 579 1810 · 📍 Torreón, Coahuila</p>
