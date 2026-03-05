@@ -345,7 +345,7 @@ with tab2:
             
             st.info(f"📈 **Factor INPC {res['factor_inpc']:.2f}x** · Para mantener poder adquisitivo")
 
-# ========== PESTAÑA 3: COMPARATIVA CON INPC ==========
+# ========== PESTAÑA 3: COMPARATIVA CON 4 BARRAS SIDE BY SIDE ==========
 with tab3:
     st.subheader("📊 Comparativa de escenarios")
     
@@ -399,43 +399,54 @@ with tab3:
             
             st.divider()
             
-            # Gráfica comparativa
+            # ===== GRÁFICA CON 4 BARRAS SIDE BY SIDE =====
             fig = go.Figure()
             
-            # Líneas base
-            fig.add_trace(go.Scatter(
-                x=[min(meses_comparar), max(meses_comparar)],
-                y=[pension_base, pension_base],
-                mode='lines',
-                name=f'Base HOY (${pension_base:,.0f})',
-                line=dict(color='#94a3b8', dash='dash')
-            ))
+            # Preparar datos para las barras
+            x_labels = [f"{m} meses" for m in meses_comparar]
             
-            fig.add_trace(go.Scatter(
-                x=[min(meses_comparar), max(meses_comparar)],
-                y=[pension_base_2029, pension_base_2029],
-                mode='lines',
-                name=f'Base 2029 (${pension_base_2029:,.0f})',
-                line=dict(color='#f59e0b', dash='dash')
-            ))
-            
-            # Barras M40
+            # Barras: Base HOY (para cada mes, el mismo valor)
             fig.add_trace(go.Bar(
-                x=list(meses_comparar),
-                y=pensiones_m40,
+                name='Base HOY',
+                x=x_labels,
+                y=[pension_base] * len(meses_comparar),
+                marker_color='#94a3b8',
+                text=[f"${pension_base:,.0f}"] * len(meses_comparar),
+                textposition='outside',
+                width=0.15
+            ))
+            
+            # Barras: Base 2029
+            fig.add_trace(go.Bar(
+                name='Base 2029',
+                x=x_labels,
+                y=[pension_base_2029] * len(meses_comparar),
+                marker_color='#cbd5e1',
+                text=[f"${pension_base_2029:,.0f}"] * len(meses_comparar),
+                textposition='outside',
+                width=0.15
+            ))
+            
+            # Barras: Con M40 HOY
+            fig.add_trace(go.Bar(
                 name='Con M40 HOY',
+                x=x_labels,
+                y=pensiones_m40,
                 marker_color='#0066b3',
                 text=[f"${p:,.0f}" for p in pensiones_m40],
-                textposition='outside'
+                textposition='outside',
+                width=0.15
             ))
             
+            # Barras: Con M40 2029
             fig.add_trace(go.Bar(
-                x=list(meses_comparar),
-                y=pensiones_m40_2029,
                 name='Con M40 2029',
+                x=x_labels,
+                y=pensiones_m40_2029,
                 marker_color='#00a86b',
                 text=[f"${p:,.0f}" for p in pensiones_m40_2029],
-                textposition='outside'
+                textposition='outside',
+                width=0.15
             ))
             
             fig.update_layout(
@@ -445,7 +456,16 @@ with tab3:
                 yaxis_tickformat="$,.0f",
                 height=500,
                 barmode='group',
-                hovermode='x unified'
+                bargap=0.2,
+                bargroupgap=0.1,
+                hovermode='x unified',
+                legend=dict(
+                    orientation="h",
+                    yanchor="bottom",
+                    y=1.02,
+                    xanchor="center",
+                    x=0.5
+                )
             )
             
             st.plotly_chart(fig, use_container_width=True)
@@ -458,6 +478,7 @@ with tab3:
             # Mejor escenario
             mejor_idx = pensiones_m40_2029.index(max(pensiones_m40_2029))
             st.success(f"✨ **Mejor escenario 2029:** {meses_comparar[mejor_idx]} meses M40 - Pensión: ${pensiones_m40_2029[mejor_idx]:,.0f}")
+
 
 # ============================================
 # PIE DE PÁGINA SIMPLE
