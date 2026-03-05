@@ -419,25 +419,21 @@ with tab3:
             st.success(f"✨ **Mejor escenario:** {meses_comparar[mejor_idx]} meses M40 - Pensión: ${pensiones_m40[mejor_idx]:,.0f}")
 
 # ============================================
-# PIE DE PÁGINA - VERSIÓN QUE SÍ FUNCIONA
+# PIE DE PÁGINA - VERSIÓN ULTRA SIMPLE
 # ============================================
 st.divider()
 st.markdown("""
-<div style='text-align: center; color: #94a3b8; font-size: 0.8rem; margin-top: 2rem; padding: 1rem; border-top: 1px solid #334155;'>
+### ⚠️ AVISO IMPORTANTE
 
-    <p style='color: #f59e0b; font-weight: 600;'>⚠️ AVISO IMPORTANTE</p>
-    <p>Este simulador proporciona estimaciones basadas en la Ley 73 del IMSS. Los resultados son aproximados y no constituyen un dictamen oficial.</p>
-    <p>Consulte con un asesor certificado para un cálculo definitivo.</p>
+Este simulador proporciona estimaciones basadas en la Ley 73 del IMSS. Los resultados son aproximados y no constituyen un dictamen oficial.
 
-    <p style='margin-top: 1rem;'>
-        <a href='#' style='color: #94a3b8; margin: 0 0.5rem; text-decoration: none;'>Aviso de Privacidad</a> |
-        <a href='#' style='color: #94a3b8; margin: 0 0.5rem; text-decoration: none;'>Términos y Condiciones</a> |
-        <a href='#' style='color: #94a3b8; margin: 0 0.5rem; text-decoration: none;'>Política de Cookies</a> |
-        <a href='#' style='color: #94a3b8; margin: 0 0.5rem; text-decoration: none;'>Contacto</a>
-    </p>
+Consulte con un asesor certificado para un cálculo definitivo.
 
-    <p style='margin-top: 1rem;'>📧 <a href='mailto:contacto@optipension73.com' style='color: #94a3b8; text-decoration: none;'>contacto@optipension73.com</a> · 📱 871 579 1810 · 📍 Torreón, Coahuila</p>
-    <p>© 2026 OptiPensión 73. Todos los derechos reservados.</p>
+---
 
-</div>
-""", unsafe_allow_html=True)
+[Aviso de Privacidad] · [Términos y Condiciones] · [Política de Cookies] · [Contacto]
+
+📧 contacto@optipension73.com · 📱 871 579 1810 · 📍 Torreón, Coahuila
+
+© 2026 OptiPensión 73. Todos los derechos reservados.
+""")
