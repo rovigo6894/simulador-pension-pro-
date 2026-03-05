@@ -419,35 +419,25 @@ with tab3:
             st.success(f"✨ **Mejor escenario:** {meses_comparar[mejor_idx]} meses M40 - Pensión: ${pensiones_m40[mejor_idx]:,.0f}")
 
 # ============================================
-# PIE DE PÁGINA DEFINITIVO
+# PIE DE PÁGINA SIMPLE QUE SÍ FUNCIONA
 # ============================================
 st.divider()
 st.markdown("""
-<div style='text-align: center; color: #94a3b8; font-size: 0.75rem; line-height: 1.6; padding: 1rem 0;'>
+<div style='text-align: center; color: #94a3b8; font-size: 0.8rem; margin-top: 2rem; padding: 1rem; border-top: 1px solid #334155;'>
 
-    <div style='background: rgba(0,0,0,0.2); border-radius: 1rem; padding: 1.5rem; margin-bottom: 1rem;'>
-        <p style='font-weight: 600; color: #f59e0b; margin-bottom: 0.5rem;'>⚠️ AVISO IMPORTANTE</p>
-        <p style='margin: 0.5rem 0;'>Este simulador proporciona estimaciones basadas en la Ley 73 del IMSS y la información proporcionada por el usuario. Los resultados son aproximados y no constituyen un dictamen oficial ni una garantía de pago.</p>
-        <p style='margin: 0.5rem 0;'>Se recomienda consultar directamente con el Instituto Mexicano del Seguro Social (IMSS) o con un asesor previsional certificado para obtener un cálculo definitivo y personalizado.</p>
-    </div>
+    <p style='color: #f59e0b; font-weight: 600;'>⚠️ AVISO IMPORTANTE</p>
+    <p>Este simulador proporciona estimaciones basadas en la Ley 73 del IMSS. Los resultados son aproximados y no constituyen un dictamen oficial.</p>
+    <p>Consulte con un asesor certificado para un cálculo definitivo.</p>
 
-    <div style='display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem; margin: 1rem 0; padding: 0.5rem 0;'>
-        <a href='#' style='color: #94a3b8; text-decoration: none;'>Aviso de Privacidad</a>
-        <a href='#' style='color: #94a3b8; text-decoration: none;'>Términos y Condiciones</a>
-        <a href='#' style='color: #94a3b8; text-decoration: none;'>Política de Cookies</a>
-        <a href='#' style='color: #94a3b8; text-decoration: none;'>Legal</a>
-        <a href='#' style='color: #94a3b8; text-decoration: none;'>Contacto</a>
-    </div>
+    <p style='margin-top: 1rem;'>
+        <a href='#' style='color: #94a3b8; margin: 0 0.5rem;'>Aviso de Privacidad</a> |
+        <a href='#' style='color: #94a3b8; margin: 0 0.5rem;'>Términos y Condiciones</a> |
+        <a href='#' style='color: #94a3b8; margin: 0 0.5rem;'>Política de Cookies</a> |
+        <a href='#' style='color: #94a3b8; margin: 0 0.5rem;'>Contacto</a>
+    </p>
 
-    <div style='margin: 1rem 0;'>
-        <p>📧 <a href='mailto:contacto@optipension73.com' style='color: #94a3b8; text-decoration: none;'>contacto@optipension73.com</a> · 📱 871 579 1810</p>
-        <p>📍 Torreón, Coahuila · México</p>
-    </div>
-
-    <div style='border-top: 1px solid rgba(255,255,255,0.1); margin: 1rem 0; padding-top: 1rem;'>
-        <p>© 2026 OptiPensión 73. Todos los derechos reservados.</p>
-        <p style='font-size: 0.7rem; color: #64748b;'>Optimización Integral de Pensiones · Ley 73</p>
-    </div>
+    <p style='margin-top: 1rem;'>📧 contacto@optipension73.com · 📱 871 579 1810 · 📍 Torreón, Coahuila</p>
+    <p>© 2026 OptiPensión 73. Todos los derechos reservados.</p>
 
 </div>
 """, unsafe_allow_html=True)
