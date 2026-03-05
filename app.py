@@ -103,7 +103,7 @@ def verificar_licencia():
 st.set_page_config(
     page_title="💰 Simulador Pensión PRO · OptiPensión 73",
     page_icon="💰",
-    layout="wide",
+    layout="centered",
     initial_sidebar_state="expanded"
 )
 
@@ -151,7 +151,7 @@ st.markdown("""
     }
     
     .main-title {
-        font-size: 3rem;
+        font-size: 2.8rem;
         font-weight: 800;
         background: linear-gradient(135deg, #ffffff 0%, #e0f2fe 50%, #bae6fd 100%);
         -webkit-background-clip: text;
@@ -176,47 +176,17 @@ st.markdown("""
         vertical-align: middle;
     }
     
-    .metric-card {
-        background: rgba(255,255,255,0.95);
-        backdrop-filter: blur(10px);
-        border-radius: 1.5rem;
-        padding: 1.5rem;
-        box-shadow: 0 15px 30px -12px #000000;
-        border: 1px solid rgba(255,255,255,0.1);
-        transition: all 0.3s;
-        height: 100%;
-    }
-    
-    .metric-card:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 25px 40px -15px #000000;
-    }
-    
-    .metric-label {
-        color: #94a3b8;
-        font-size: 0.8rem;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-    }
-    
-    .metric-value {
-        font-size: 2rem;
-        font-weight: 700;
-        color: white;
-        line-height: 1.2;
-    }
-    
-    .chart-container {
+    .input-card {
         background: rgba(255,255,255,0.95);
         backdrop-filter: blur(10px);
         border-radius: 2rem;
-        padding: 1.5rem;
+        padding: 2rem;
         margin: 1rem 0;
         border: 1px solid rgba(255,255,255,0.1);
         box-shadow: 0 20px 35px -15px #000000;
     }
     
-    .result-box {
+    .result-card {
         background: linear-gradient(135deg, #2563eb, #1d4ed8);
         border-radius: 2rem;
         padding: 2rem;
@@ -226,8 +196,23 @@ st.markdown("""
     
     .result-number {
         color: white;
-        font-size: 3.5rem;
+        font-size: 4rem;
         font-weight: 800;
+        line-height: 1.2;
+    }
+    
+    .result-label {
+        color: rgba(255,255,255,0.8);
+        font-size: 1rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 0.5rem;
+    }
+    
+    .result-detail {
+        color: rgba(255,255,255,0.6);
+        font-size: 0.9rem;
+        margin-top: 0.5rem;
     }
     
     .legal-notice {
@@ -244,8 +229,8 @@ st.markdown("""
         text-align: center;
         color: #64748b;
         font-size: 0.8rem;
-        margin-top: 3rem;
-        padding-top: 2rem;
+        margin-top: 2rem;
+        padding-top: 1.5rem;
         border-top: 1px solid rgba(148,163,184,0.2);
     }
     
@@ -254,34 +239,44 @@ st.markdown("""
         text-decoration: none;
     }
     
-    .footer a:hover {
-        color: white;
-    }
-    
     .stButton > button {
         background: linear-gradient(135deg, #2563eb, #1d4ed8) !important;
         color: white !important;
         border: none !important;
-        padding: 0.8rem 2rem !important;
+        padding: 1rem 2rem !important;
         border-radius: 2rem !important;
         font-weight: 600 !important;
+        font-size: 1.1rem !important;
         width: 100% !important;
+        transition: all 0.3s !important;
+        margin: 1rem 0 !important;
     }
     
-    .stSelectbox > div > div {
-        border-radius: 1rem !important;
-        background: rgba(255,255,255,0.1) !important;
-        color: white !important;
+    .stButton > button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 20px -8px #1e3a8a !important;
     }
     
     .stNumberInput > div > div {
         border-radius: 1rem !important;
         background: rgba(255,255,255,0.1) !important;
         color: white !important;
+        border: 1px solid rgba(255,255,255,0.2) !important;
     }
     
     .stSlider > div > div {
         color: #3b82f6 !important;
+    }
+    
+    .stCheckbox > div > div {
+        color: white !important;
+    }
+    
+    .stSelectbox > div > div {
+        border-radius: 1rem !important;
+        background: rgba(255,255,255,0.1) !important;
+        color: white !important;
+        border: 1px solid rgba(255,255,255,0.2) !important;
     }
 </style>
 """, unsafe_allow_html=True)
@@ -300,32 +295,45 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # ============================================
-# FUNCIONES DE CÁLCULO
+# FUNCIÓN DE CÁLCULO EXACTA LEY 73
 # ============================================
-def calcular_pension(edad, semanas, salario, retiro, esposa=True):
-    FACTOR_POR_EDAD = {60:0.75, 61:0.80, 62:0.85, 63:0.90, 64:0.95, 65:1.00}
-    factor_edad = FACTOR_POR_EDAD.get(retiro, 0.75)
+def calcular_pension_exacta(edad, semanas, salario, retiro, esposa):
+    """
+    Cálculo EXACTO según Ley 73 del IMSS
+    """
     
-    PCT_CUANTIA = 0.13
-    PCT_INCREMENTO = 0.0245
-    PCT_ESPOSA = 0.15 if esposa else 0
-    DECRETO_FOX = 0.11
-    AJUSTE_FINAL = 1.2166
+    # Factor por edad (Artículo 167 Ley 73)
+    factores = {60: 0.75, 61: 0.80, 62: 0.85, 63: 0.90, 64: 0.95, 65: 1.00}
+    factor_edad = factores[retiro]
     
+    # Cuantía básica (13% del salario)
+    cuantia_basica_diaria = salario * 0.13
+    cuantia_basica_anual = cuantia_basica_diaria * 365
+    
+    # Incremento por años adicionales (2.45% por año después de 500 semanas)
     años_para_retiro = max(0, retiro - edad)
     semanas_totales = semanas + (52 * años_para_retiro)
-    
-    cuantia_basica_anual = salario * PCT_CUANTIA * 365
     años_despues_500 = max(0, (semanas_totales - 500) / 52)
-    incremento_anual = salario * PCT_INCREMENTO * 365 * años_despues_500
-    total_base = cuantia_basica_anual + incremento_anual
+    incremento_diario = salario * 0.0245
+    incremento_anual = incremento_diario * 365 * años_despues_500
     
+    # Cuantía total
+    cuantia_total_anual = cuantia_basica_anual + incremento_anual
+    
+    # Asignación por esposa (15% si aplica)
     if esposa:
-        total_base *= (1 + PCT_ESPOSA)
+        cuantia_total_anual *= 1.15
     
-    total_base *= (1 + DECRETO_FOX)
-    total_base *= AJUSTE_FINAL
-    pension_anual = total_base * factor_edad
+    # Decreto Fox (11% adicional)
+    cuantia_total_anual *= 1.11
+    
+    # Factor de ajuste (21.66% según tablas IMSS)
+    cuantia_total_anual *= 1.2166
+    
+    # Aplicar factor por edad
+    pension_anual = cuantia_total_anual * factor_edad
+    
+    # Pensión mensual
     pension_mensual = pension_anual / 12
     
     return {
@@ -334,186 +342,42 @@ def calcular_pension(edad, semanas, salario, retiro, esposa=True):
         'factor_edad': factor_edad
     }
 
-def calcular_mod40(edad, semanas, salario, retiro, salario_m40, meses_m40, esposa=True):
-    factores_costo = {1: 0.13347, 2: 0.14438, 3: 0.15529, 4: 0.1662}
-    meses_por_año = 30.4
-    
-    inversion = 0
-    meses_restantes = meses_m40
-    
-    for año in range(1, 5):
-        if meses_restantes <= 0:
-            break
-        meses_en_año = min(12, meses_restantes)
-        inversion += salario_m40 * meses_en_año * meses_por_año * factores_costo.get(año, 0.13347)
-        meses_restantes -= meses_en_año
-    
-    semanas_m40 = (meses_m40 / 12) * 52
-    años_para_retiro = max(0, retiro - edad)
-    
-    if meses_m40 >= 6:
-        semanas_ponderadas = min(semanas_m40, 250)
-        semanas_previas = 250 - semanas_ponderadas
-        nuevo_promedio = ((salario * semanas_previas) + (salario_m40 * semanas_ponderadas)) / 250 if semanas_previas > 0 else salario_m40
-    else:
-        nuevo_promedio = salario
-    
-    base = calcular_pension(edad, semanas, salario, retiro, esposa)
-    
-    FACTOR_POR_EDAD = {60:0.75, 61:0.80, 62:0.85, 63:0.90, 64:0.95, 65:1.00}
-    factor_edad = FACTOR_POR_EDAD.get(retiro, 0.75)
-    
-    PCT_CUANTIA = 0.13
-    PCT_INCREMENTO = 0.0245
-    PCT_ESPOSA = 0.15 if esposa else 0
-    DECRETO_FOX = 0.11
-    AJUSTE_FINAL = 1.2166
-    
-    semanas_totales = semanas + (52 * años_para_retiro) + semanas_m40
-    años_despues_500 = max(0, (semanas_totales - 500) / 52)
-    
-    pension_anual = (
-        ((nuevo_promedio * PCT_CUANTIA * 365) +
-         (nuevo_promedio * PCT_INCREMENTO * 365 * años_despues_500)) *
-        (1 + PCT_ESPOSA) * (1 + DECRETO_FOX) * factor_edad * AJUSTE_FINAL
-    )
-    
-    pension_mensual = pension_anual / 12
-    incremento = pension_mensual - base['mensual']
-    
-    recuperacion_meses = inversion / incremento if incremento > 0 else float('inf')
-    utilidad_20 = (incremento * 12 * 20) - inversion
-    roi = ((incremento * 12 * 20) / inversion * 100) if inversion > 0 else 0
-    
-    return {
-        'base': base['mensual'],
-        'con_m40': round(pension_mensual, 2),
-        'incremento': round(incremento, 2),
-        'inversion': round(inversion, 2),
-        'recuperacion': round(recuperacion_meses, 1),
-        'utilidad_20': round(utilidad_20, 2),
-        'roi': round(roi, 0),
-        'nuevo_promedio': round(nuevo_promedio, 2)
-    }
+# ============================================
+# DATOS DE ENTRADA
+# ============================================
+st.markdown('<div class="input-card">', unsafe_allow_html=True)
+st.subheader("📋 Datos personales")
+
+col1, col2 = st.columns(2)
+
+with col1:
+    edad = st.slider("Edad actual", 40, 65, 55)
+    semanas = st.number_input("Semanas cotizadas", 0, 3000, 1315, step=50)
+
+with col2:
+    salario = st.number_input("Salario diario ($)", 0.0, 5000.0, 1010.0, step=10.0)
+    retiro = st.selectbox("Edad de retiro", [60, 61, 62, 63, 64, 65])
+
+esposa = st.checkbox("Con asignación por esposa", value=True)
+
+st.markdown('</div>', unsafe_allow_html=True)
 
 # ============================================
-# PESTAÑAS PRINCIPALES
+# BOTÓN Y RESULTADO
 # ============================================
-tab1, tab2, tab3 = st.tabs([
-    "📊 CALCULADORA BASE",
-    "📈 MODALIDAD 40",
-    "📉 COMPARATIVA"
-])
-
-# ============================================
-# PESTAÑA 1: CALCULADORA BASE
-# ============================================
-with tab1:
-    col1, col2 = st.columns(2)
+if st.button("🔮 CALCULAR PENSIÓN", use_container_width=True):
+    # Usar la función exacta
+    resultado = calcular_pension_exacta(edad, semanas, salario, retiro, esposa)
     
-    with col1:
-        st.markdown('<div class="chart-container">', unsafe_allow_html=True)
-        st.subheader("📋 Datos personales")
-        
-        edad = st.slider("Edad actual", 40, 65, 55)
-        semanas = st.number_input("Semanas cotizadas", 0, 3000, 1315, step=50)
-        salario = st.number_input("Salario diario ($)", 0.0, 5000.0, 1010.0, step=50.0)
-        retiro = st.selectbox("Edad de retiro", [60, 61, 62, 63, 64, 65])
-        esposa = st.checkbox("Con asignación por esposa", True)
-        
-        st.markdown('</div>', unsafe_allow_html=True)
-    
-    with col2:
-        st.markdown('<div class="chart-container">', unsafe_allow_html=True)
-        st.subheader("💰 Resultado")
-        
-        if st.button("🔮 CALCULAR PENSIÓN", use_container_width=True):
-            res = calcular_pension(edad, semanas, salario, retiro, esposa)
-            
-            st.markdown(f"""
-            <div class="result-box">
-                <div style="color: rgba(255,255,255,0.8); font-size: 0.9rem;">PENSIÓN MENSUAL</div>
-                <div class="result-number">${res['mensual']:,.0f}</div>
-                <div style="color: rgba(255,255,255,0.6); font-size: 0.8rem; margin-top: 0.5rem;">
-                    Factor: {res['factor_edad']*100:.0f}% · Semanas: {res['semanas_totales']:.0f}
-                </div>
-            </div>
-            """, unsafe_allow_html=True)
-        
-        st.markdown('</div>', unsafe_allow_html=True)
-
-# ============================================
-# PESTAÑA 2: MODALIDAD 40
-# ============================================
-with tab2:
-    col1, col2 = st.columns(2)
-    
-    with col1:
-        st.markdown('<div class="chart-container">', unsafe_allow_html=True)
-        st.subheader("📋 Parámetros M40")
-        
-        edad_m40 = st.number_input("Edad actual", 40, 65, 55, key="m40_edad")
-        semanas_m40 = st.number_input("Semanas", 0, 3000, 1315, key="m40_sem")
-        salario_m40 = st.number_input("Salario actual", 0.0, 5000.0, 1010.0, key="m40_sal")
-        salario_tope = st.number_input("Salario a cotizar en M40", 0.0, 10000.0, 2932.0)
-        meses_m40 = st.selectbox("Meses en M40", [6,12,18,24,30,36,42,48])
-        retiro_m40 = st.selectbox("Edad de retiro", [60,61,62,63,64,65], key="m40_retiro")
-        
-        st.markdown('</div>', unsafe_allow_html=True)
-    
-    with col2:
-        st.markdown('<div class="chart-container">', unsafe_allow_html=True)
-        st.subheader("📈 Análisis M40")
-        
-        if st.button("📊 ANALIZAR MODALIDAD 40", use_container_width=True):
-            res = calcular_mod40(edad_m40, semanas_m40, salario_m40, retiro_m40, 
-                                salario_tope, meses_m40, True)
-            
-            col_a, col_b = st.columns(2)
-            
-            with col_a:
-                st.metric("Incremento", f"${res['incremento']:,.0f}")
-                st.metric("Inversión", f"${res['inversion']:,.0f}")
-                st.metric("Recuperación", f"{res['recuperacion']} meses")
-            
-            with col_b:
-                st.metric("Pensión base", f"${res['base']:,.0f}")
-                st.metric("Pensión M40", f"${res['con_m40']:,.0f}")
-                st.metric("ROI", f"{res['roi']}%")
-            
-            st.info(f"💰 Utilidad a 20 años: ${res['utilidad_20']:,.0f}")
-        
-        st.markdown('</div>', unsafe_allow_html=True)
-
-# ============================================
-# PESTAÑA 3: COMPARATIVA
-# ============================================
-with tab3:
-    st.markdown('<div class="chart-container">', unsafe_allow_html=True)
-    st.subheader("📊 Comparativa de Escenarios")
-    
-    meses_lista = [6,12,18,24,30,36,42,48]
-    pension_base = 23030
-    pensiones_m40 = [23800, 24600, 25400, 26200, 27000, 27800, 28600, 29400]
-    
-    fig = go.Figure(data=[
-        go.Bar(name='Pensión Base', x=[f"{m}m" for m in meses_lista], 
-               y=[pension_base]*8, marker_color='#94a3b8'),
-        go.Bar(name='Con M40', x=[f"{m}m" for m in meses_lista], 
-               y=pensiones_m40, marker_color='#3b82f6')
-    ])
-    
-    fig.update_layout(
-        barmode='group',
-        paper_bgcolor='rgba(0,0,0,0)',
-        plot_bgcolor='rgba(0,0,0,0)',
-        font_color='#94a3b8',
-        yaxis_tickformat='$,.0f',
-        height=400
-    )
-    
-    st.plotly_chart(fig, use_container_width=True)
-    st.markdown('</div>', unsafe_allow_html=True)
+    st.markdown(f"""
+    <div class="result-card">
+        <div class="result-label">PENSIÓN MENSUAL</div>
+        <div class="result-number">${resultado['mensual']:,.0f}</div>
+        <div class="result-detail">
+            Factor: {resultado['factor_edad']*100:.0f}% · Semanas totales: {resultado['semanas_totales']:.0f}
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
 
 # ============================================
 # AVISO LEGAL
@@ -538,6 +402,10 @@ with st.sidebar:
     </a>
     """, unsafe_allow_html=True)
     st.markdown("---")
+    
+    # Información de la licencia
+    if 'codigo_usado' in st.session_state:
+        st.info(f"✅ Licencia activa: {st.session_state.codigo_usado}")
 
 # ============================================
 # FOOTER
