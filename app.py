@@ -11,7 +11,7 @@ import os
 # ============================================
 
 LICENCIAS = {
-    "PRO-001": {"expira": "2026-12-31", "activa": True, "max_usos": 2},
+    "PRO-001": {"expira": "2026-12-31", "activa": True, "max_usos": 10},
     "PRO-002": {"expira": "2026-12-31", "activa": True, "max_usos": 2},
     "PRO-003": {"expira": "2026-12-31", "activa": True, "max_usos": 2},
     "PRO-004": {"expira": "2026-12-31", "activa": True, "max_usos": 2},
