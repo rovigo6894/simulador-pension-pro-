@@ -586,7 +586,7 @@ with st.sidebar:
         st.success(f"✅ Licencia activa: {st.session_state.codigo_usado}")
 
 # ============================================
-# FOOTER CORREGIDO
+# FOOTER CORREGIDO (PEGA ESTO EXACTAMENTE)
 # ============================================
 st.markdown("""
 <div class="footer">
@@ -626,7 +626,7 @@ st.markdown("""
     
     <div class="footer-small">
         <p>Ing. Roberto Villarreal González · Plan Maestro 2028-2068</p>
-        <p>⚕️ Cruz Ankh + Ojo de Horus · Alma vieja, cuerpo resistente</p>
+        <p style="font-size: 0.6rem; color: #64748b; margin-top: 0.5rem;">⚕️ Cruz Ankh + Ojo de Horus · Alma vieja, cuerpo resistente</p>
     </div>
 </div>
 """, unsafe_allow_html=True)
