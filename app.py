@@ -147,7 +147,7 @@ st.markdown("""
     .title-container {
         text-align: center;
         margin-bottom: 2rem;
-        padding: 1rem;
+        padding: 1.5rem;
         background: rgba(255,255,255,0.05);
         border-radius: 3rem;
         border: 1px solid rgba(255,255,255,0.1);
@@ -159,12 +159,14 @@ st.markdown("""
         background: linear-gradient(135deg, #ffffff 0%, #e0f2fe 50%, #bae6fd 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
-        margin-bottom: 0.3rem;
+        margin-bottom: 0.5rem;
+        letter-spacing: -0.02em;
     }
     
     .sub-title {
         font-size: 1rem;
         color: #94a3b8;
+        margin-bottom: 0.5rem;
     }
     
     .badge-pro {
@@ -187,7 +189,7 @@ st.markdown("""
         font-size: 0.7rem;
         font-weight: 600;
         display: inline-block;
-        margin-left: 0.5rem;
+        margin: 0 0.2rem;
     }
     
     .input-card {
@@ -251,6 +253,7 @@ st.markdown("""
         border: 1px solid rgba(255,255,255,0.1);
     }
     
+    /* FOOTER CORREGIDO */
     .footer {
         background: rgba(0,0,0,0.3);
         border-radius: 2rem;
@@ -265,7 +268,8 @@ st.markdown("""
     .footer a {
         color: #94a3b8;
         text-decoration: none;
-        margin: 0 0.5rem;
+        transition: color 0.3s;
+        margin: 0 0.3rem;
     }
     
     .footer a:hover {
@@ -275,9 +279,37 @@ st.markdown("""
     .footer-links {
         display: flex;
         justify-content: center;
-        gap: 1rem;
         flex-wrap: wrap;
+        gap: 1.5rem;
         margin: 1rem 0;
+        padding: 0.5rem 0;
+    }
+    
+    .footer-contact {
+        margin: 1rem 0;
+        line-height: 1.8;
+    }
+    
+    .footer-contact a {
+        color: #3b82f6;
+        font-weight: 500;
+    }
+    
+    .footer-divider {
+        border-top: 1px solid rgba(255,255,255,0.1);
+        margin: 1rem 0;
+        padding-top: 1rem;
+    }
+    
+    .footer-small {
+        font-size: 0.6rem;
+        color: #64748b;
+        line-height: 1.5;
+    }
+    
+    .footer-icon {
+        display: inline-block;
+        margin-right: 0.3rem;
     }
     
     .stButton > button {
@@ -336,14 +368,14 @@ st.markdown("""
         <span class="badge-opti">Modalidad 40</span>
         <span class="badge-opti">Optimización Integral</span>
     </div>
-    <div style="margin-top: 1rem; color: #94a3b8; font-size: 0.9rem;">
+    <div style="margin-top: 0.8rem; color: #94a3b8; font-size: 0.9rem;">
         Ing. Roberto Villarreal · Plan Maestro 2026
     </div>
 </div>
 """, unsafe_allow_html=True)
 
 # ============================================
-# FUNCIÓN DE CÁLCULO CALIBRADA
+# FUNCIÓN DE CÁLCULO
 # ============================================
 def calcular_pension_calibrada(edad, semanas, salario, retiro, esposa):
     factores = {60: 0.75, 61: 0.80, 62: 0.85, 63: 0.90, 64: 0.95, 65: 1.00}
@@ -375,7 +407,6 @@ def calcular_pension_calibrada(edad, semanas, salario, retiro, esposa):
     }
 
 def calcular_mod40(edad, semanas, salario, retiro, salario_m40, meses_m40, esposa):
-    # Cálculo simplificado para demostración
     base = calcular_pension_calibrada(edad, semanas, salario, retiro, esposa)
     incremento = salario_m40 * 0.3 * (meses_m40 / 12)
     pension_m40 = base['mensual'] + incremento
@@ -509,7 +540,6 @@ with tab3:
     
     st.plotly_chart(fig, use_container_width=True)
     
-    # Tabla comparativa
     df = pd.DataFrame({
         'Meses': meses,
         'Pensión Base': [f"${base:,.0f}"]*8,
@@ -534,8 +564,6 @@ st.markdown("""
 # WHATSAPP EN SIDEBAR
 # ============================================
 with st.sidebar:
-    st.image("https://via.placeholder.com/150x50/0b1c26/3b82f6?text=OptiPensión+73", width=200)
-    st.markdown("---")
     st.markdown("### 📲 CONTACTO DIRECTO")
     st.markdown("""
     <a href="https://wa.me/5218715791810" target="_blank">
@@ -550,6 +578,7 @@ with st.sidebar:
     - 🏢 **OptiPensión 73**
     - 📧 contacto@optipension73.com
     - 📞 871 579 1810
+    - 📍 Torreón, Coahuila
     """)
     
     st.markdown("---")
@@ -557,14 +586,14 @@ with st.sidebar:
         st.success(f"✅ Licencia activa: {st.session_state.codigo_usado}")
 
 # ============================================
-# FOOTER COMPLETO
+# FOOTER CORREGIDO
 # ============================================
 st.markdown("""
 <div class="footer">
-    <div style="font-size: 1.2rem; font-weight: 600; margin-bottom: 1rem; color: white;">
+    <div style="font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem; background: linear-gradient(135deg, #ffffff, #94a3b8); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
         OptiPensión 73
     </div>
-    <div style="margin-bottom: 1rem;">
+    <div style="margin-bottom: 1.5rem; color: #94a3b8;">
         Optimización Integral de Pensiones · Ley 73
     </div>
     
@@ -583,15 +612,21 @@ st.markdown("""
         <a href="#">Legal</a>
     </div>
     
-    <div style="margin: 1rem 0;">
-        <p>📧 <a href="mailto:contacto@optipension73.com">contacto@optipension73.com</a> · 📱 871 579 1810</p>
-        <p>🏠 Torreón, Coahuila · México</p>
+    <div class="footer-contact">
+        <p>📧 <a href="mailto:contacto@optipension73.com">contacto@optipension73.com</a></p>
+        <p>📱 <a href="tel:8715791810">871 579 1810</a></p>
+        <p>📍 Torreón, Coahuila · México</p>
     </div>
     
-    <div style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1rem; margin-top: 1rem;">
+    <div class="footer-divider"></div>
+    
+    <div>
         <p>© 2026 OptiPensión 73. Todos los derechos reservados.</p>
-        <p style="font-size: 0.7rem;">Ing. Roberto Villarreal González · Plan Maestro 2028-2068</p>
-        <p style="font-size: 0.6rem; color: #64748b;">⚕️ Cruz Ankh + Ojo de Horus · Alma vieja, cuerpo resistente</p>
+    </div>
+    
+    <div class="footer-small">
+        <p>Ing. Roberto Villarreal González · Plan Maestro 2028-2068</p>
+        <p>⚕️ Cruz Ankh + Ojo de Horus · Alma vieja, cuerpo resistente</p>
     </div>
 </div>
 """, unsafe_allow_html=True)
