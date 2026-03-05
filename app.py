@@ -101,7 +101,6 @@ st.markdown("""
 <div style='text-align: center; margin-bottom: 2rem;'>
     <h1 style='color: #0066b3; font-size: 3rem; margin-bottom: 0;'>💰 OPTIPENSIÓN 73</h1>
     <p style='color: #666; font-size: 1.2rem;'>Optimización Integral de Pensiones · Ley 73</p>
-    <p style='color: #888;'>Ing. Roberto Villarreal · Plan Maestro 2026</p>
 </div>
 """, unsafe_allow_html=True)
 
@@ -155,7 +154,7 @@ def calcular_pension_base(semanas, salario_promedio, edad_actual, edad_retiro, e
     }
 
 # ============================================
-# FUNCIÓN DE MODALIDAD 40 (COMPLETA)
+# FUNCIÓN DE MODALIDAD 40
 # ============================================
 
 def calcular_mod40(semanas, salario_actual, edad_actual, edad_retiro, salario_m40, meses_m40, esposa=True):
@@ -166,7 +165,7 @@ def calcular_mod40(semanas, salario_actual, edad_actual, edad_retiro, salario_m4
     # 1. Pensión base sin M40
     base = calcular_pension_base(semanas, salario_actual, edad_actual, edad_retiro, esposa)
     
-    # 2. Cálculo de la inversión en M40 (según hoja MOD 40 del Excel)
+    # 2. Cálculo de la inversión en M40
     factores_m40 = {
         1: 0.13347,  # Año 1
         2: 0.14438,  # Año 2
@@ -282,7 +281,7 @@ with tab1:
                 </div>
                 """, unsafe_allow_html=True)
 
-# ========== PESTAÑA 2: MODALIDAD 40 (COMPLETA) ==========
+# ========== PESTAÑA 2: MODALIDAD 40 ==========
 with tab2:
     st.subheader("📈 Análisis de Modalidad 40")
     
@@ -330,7 +329,7 @@ with tab2:
                 st.write(f"**Nuevo salario promedio:** ${res['nuevo_promedio']:,.2f}")
                 st.write(f"**Semanas totales con M40:** {res['semanas_totales']:.0f}")
 
-# ========== PESTAÑA 3: COMPARATIVA COMPLETA ==========
+# ========== PESTAÑA 3: COMPARATIVA ==========
 with tab3:
     st.subheader("📊 Comparativa de escenarios")
     
@@ -382,7 +381,7 @@ with tab3:
             
             # Línea base
             fig.add_trace(go.Scatter(
-                x=[0, max(meses_comparar)],
+                x=[min(meses_comparar), max(meses_comparar)],
                 y=[pension_base, pension_base],
                 mode='lines',
                 name=f'Pensión base (${pension_base:,.0f})',
@@ -420,13 +419,37 @@ with tab3:
             st.success(f"✨ **Mejor escenario:** {meses_comparar[mejor_idx]} meses M40 - Pensión: ${pensiones_m40[mejor_idx]:,.0f}")
 
 # ============================================
-# PIE DE PÁGINA
+# PIE DE PÁGINA PROFESIONAL (SIN CRUZ ANKH)
 # ============================================
 st.divider()
 st.markdown("""
-<div style='text-align: center; color: #666; font-size: 0.8rem;'>
-    <p>📧 contacto@optipension73.com · 📱 871 579 1810</p>
-    <p>© 2026 OptiPensión 73 · Optimización Integral de Pensiones</p>
-    <p>Ing. Roberto Villarreal · Plan Maestro 2028-2068</p>
+<div style='text-align: center; color: #94a3b8; font-size: 0.75rem; line-height: 1.6; padding: 1rem 0;'>
+
+    <div style='background: rgba(0,0,0,0.2); border-radius: 1rem; padding: 1.5rem; margin-bottom: 1rem;'>
+        <p style='font-weight: 600; color: #f59e0b; margin-bottom: 0.5rem;'>⚠️ AVISO IMPORTANTE</p>
+        <p>Este simulador proporciona estimaciones basadas en la Ley 73 del IMSS y la información proporcionada por el usuario. 
+        Los resultados son aproximados y no constituyen un dictamen oficial ni una garantía de pago.</p>
+        <p style='margin-top: 0.5rem;'>Se recomienda consultar directamente con el Instituto Mexicano del Seguro Social (IMSS) 
+        o con un asesor previsional certificado para obtener un cálculo definitivo y personalizado.</p>
+    </div>
+
+    <div style='display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem; margin: 1rem 0; padding: 0.5rem 0;'>
+        <a href='#' style='color: #94a3b8; text-decoration: none;'>Aviso de Privacidad</a>
+        <a href='#' style='color: #94a3b8; text-decoration: none;'>Términos y Condiciones</a>
+        <a href='#' style='color: #94a3b8; text-decoration: none;'>Política de Cookies</a>
+        <a href='#' style='color: #94a3b8; text-decoration: none;'>Legal</a>
+        <a href='#' style='color: #94a3b8; text-decoration: none;'>Contacto</a>
+    </div>
+
+    <div style='margin: 1rem 0;'>
+        <p>📧 <a href='mailto:contacto@optipension73.com' style='color: #94a3b8;'>contacto@optipension73.com</a> · 📱 871 579 1810</p>
+        <p>📍 Torreón, Coahuila · México</p>
+    </div>
+
+    <div style='border-top: 1px solid rgba(255,255,255,0.1); margin: 1rem 0; padding-top: 1rem;'>
+        <p>© 2026 OptiPensión 73. Todos los derechos reservados.</p>
+        <p style='font-size: 0.7rem; color: #64748b;'>Optimización Integral de Pensiones · Ley 73</p>
+    </div>
+
 </div>
 """, unsafe_allow_html=True)
